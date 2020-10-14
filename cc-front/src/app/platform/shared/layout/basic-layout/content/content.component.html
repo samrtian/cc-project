@@ -1,0 +1,17 @@
+<nz-content class="app-layout-content-container"
+  [ngClass]="{'app-layout-content-default': showFull,'app-layout-content-full':!showFull}">
+  <div class="app-layout-content-tool" [hidden]="!showTool">
+    <div class="app-layout-content-tool-title">
+      <i nz-icon nzType="platform/icon:navbar" nzTheme="outline"></i>{{toolTitle}}
+    </div>
+    <div class="app-layout-content-tool-btns">
+      <ng-container *appStringTemplateOutlet="toolBtnTpl"></ng-container>
+    </div>
+  </div>
+  <div [ngClass]="{'app-layout-content-router':!showTool ,'app-layout-content-router-default':showTool}">
+    <div appScrollbar [options]="{overflowBehavior:{x:'scroll',y:'scroll'}}" (viewInit)="scrollerViewInit($event)"
+      [ngClass]="{'app-layout-content-router-inner':!showTool ,'app-layout-content-router-default-inner':showTool}">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</nz-content>

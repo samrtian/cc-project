@@ -1,0 +1,97 @@
+<div class="app-layout-header-container">
+  <div class="app-header-logo-container" *ngIf="showHeaderlogo">
+    <ng-container *appStringTemplateOutlet="sysLogo">
+      <div class="app-header-logo" [ngStyle]="{'width':sysLogo?.width}">
+        <img [src]="sysLogo?.img">
+        <div class="app-logo-title">{{sysLogo?.title}}</div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="app-header-nav">
+    <div class="app-header-nav-left">
+
+      <div class="app-nav-item app-font-size16 app-header-switch-btn" (click)="switchSider()">
+        <i nz-icon [nzType]="showHeaderlogo ?  'menu-fold':'menu-unfold' "></i>
+      </div>
+
+      <ng-container *ngFor="let btn of leftBtnList">
+        <ng-container *ngIf="btn.showTooltip">
+          <div class="app-nav-item" (click)="buttonHandler(btn.act)" [nzTooltipTitle]="btn.title"
+            [nzPlacement]="btn.placement" nz-tooltip>
+            <div class="app-nav-item-icon"><i nz-icon [nzType]="btn.icon" theme="outline"></i></div>
+            <div class="app-nav-item-label" *ngIf="btn.label">{{btn.label}}</div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!btn.showTooltip">
+          <div class="app-nav-item" (click)="buttonHandler(btn.act)">
+            <div class="app-nav-item-icon"><i nz-icon [nzType]="btn.icon" theme="outline"></i></div>
+            <div class="app-nav-item-label" *ngIf="btn.label">{{btn.label}}</div>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <!-- <div class="app-nav-item">
+              <i nz-icon nzType="schedule"></i>
+            </div>-->
+    </div>
+    <div class="app-header-nav-right">
+
+      <ng-container *ngFor="let btn of rightBtnList">
+        <ng-container *ngIf="btn.showTooltip">
+          <div class="app-nav-item" (click)="buttonHandler(btn.act)" [nzTooltipTitle]="btn.title"
+            [nzPlacement]="btn.placement" nz-tooltip>
+            <div class="app-nav-item-icon"><i nz-icon [nzType]="btn.icon" theme="outline"></i></div>
+            <div class="app-nav-item-label" *ngIf="btn.label">{{btn.label}}</div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!btn.showTooltip">
+          <div class="app-nav-item" (click)="buttonHandler(btn.act)">
+            <div class="app-nav-item-icon"><i nz-icon [nzType]="btn.icon" theme="outline"></i></div>
+            <div class="app-nav-item-label" *ngIf="btn.label">{{btn.label}}</div>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <div class="app-nav-item" (click)="toHome()">
+        <div class="app-nav-item-icon"><i nz-icon nzType="home" theme="outline"></i></div>
+        <div class="app-nav-item-label">首页</div>
+      </div>
+
+      <!--<div class="app-nav-item">
+          <div class="app-nav-item-icon"><i nz-icon nzType="bell" theme="outline"></i></div>
+          <div class="app-nav-item-label">消息</div>
+        </div>-->
+
+      <div class="app-nav-item" nz-dropdown [nzDropdownMenu]="userCenterMenu" [nzTrigger]="'click'"
+        [nzPlacement]="'bottomRight'">
+        <div class="app-nav-item-avatar">
+          <img [src]="originalUserAvatar" appErrorSrc [errSrc]="'assets/platform/img/default-avatar.png'">
+        </div>
+        <div class="app-nav-item-label">{{userData.realName}}</div>
+      </div>
+      <nz-dropdown-menu class="app-nav-user-menu" #userCenterMenu="nzDropdownMenu">
+        <ul nz-menu class="app-nav-user-menu" nzSelectable="false">
+          <li nz-menu-item (click)="userAvatarCropperVisible=true">
+            <a><i nz-icon nzType="cloud-upload" theme="outline"></i> 头像上传</a>
+          </li>
+          <li nz-menu-item (click)="updatePwd()">
+            <a><i nz-icon nzType="key" theme="outline"></i> 修改密码</a>
+          </li>
+          <li nz-menu-item *ngFor="let menuItem of dropdownMenuItemList" (click)="dropdownItemHandler(menuItem.act)">
+            <a> <i nz-icon [nzType]="menuItem.icon" theme="outline"></i> {{menuItem.label}}</a>
+          </li>
+          <li nz-menu-divider></li>
+          <li nz-menu-item (click)="exitSys()">
+            <a><i nz-icon nzType="logout" theme="outline"></i> 退出系统</a>
+          </li>
+        </ul>
+      </nz-dropdown-menu>
+
+    </div>
+  </div>
+
+  <app-img-cropper-modal #userAvatarImgCropper [(visible)]="userAvatarCropperVisible"
+    (imgUpload)="userAvatarUpload($event)" [title]="'头像上传'" [previewTitle]="'头像预览'" [originalImgLabel]="'原头像'"
+    [originalImgSrc]="originalUserAvatar"></app-img-cropper-modal>
+
+</div>

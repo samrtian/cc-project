@@ -1,0 +1,42 @@
+<div>
+    <div appPageTool [btnsTpl]="btnsTpl">
+        <ng-template #btnsTpl>
+            <app-business-tool-btn [buttonList]="buttonList" (btnClick)="onBtnClick($event)">
+            </app-business-tool-btn>
+        </ng-template>
+    </div>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+            <app-line-title title="基本信息"></app-line-title>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">标题</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="19" nzLg="21" nzXl="22">
+            {{resultData.noticeData?.noticeTitle || '无'}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">内容</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="19" nzLg="21" nzXl="22">
+            {{resultData.noticeData?.noticeContent || '无'}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">截止时间</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.noticeData?.cutoffDate || '无'}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">状态</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{(resultData?.noticeData?.status|dataDicPipe:[resultData?.FORM_STATUS_TYPE,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+    </nz-form-item>
+
+
+</div>

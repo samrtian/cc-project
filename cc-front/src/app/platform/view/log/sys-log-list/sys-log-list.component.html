@@ -1,0 +1,47 @@
+<div>
+  <div appPageTool></div>
+
+  <div class="app-data-list-container">
+    <nz-form-item>
+      <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24" [style]="{'margin-top':'-10px'}">
+        <app-line-title title="列表信息"></app-line-title>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-list [nzDataSource]="list" [nzRenderItem]="itemTpl" [nzItemLayout]="'horizontal'" nzBordered>
+      <ng-template #itemTpl let-item>
+        <nz-list-item [nzActions]="[actionsTpl]">
+          <nz-list-item-meta [nzTitle]="titleTpl" [nzAvatar]="iconTpl" [nzDescription]="descTpl">
+
+            <ng-template #titleTpl>
+              <div class="app-flex app-flex-justify-content-between">
+                <div>{{item.fileName}}</div>
+                <div class="app-sys-log-file-size">更新时间：{{item.lastModifyDate}}</div>
+              </div>
+            </ng-template>
+
+            <ng-template #iconTpl>
+              <img width="45" height="45" src="assets/platform/img/log/log.svg">
+            </ng-template>
+
+            <ng-template #descTpl>
+              <div class="app-flex app-flex-justify-content-between app-sys-log-file-desc">
+                <div>{{item.filePath}}</div>
+                <div>文件大小：{{item.fileSize}}</div>
+              </div>
+            </ng-template>
+
+          </nz-list-item-meta>
+
+          <ng-template #actionsTpl>
+            <app-business-row-btn [buttonList]="buttonList" (btnClick)="onBtnClick($event,item)"></app-business-row-btn>
+          </ng-template>
+
+
+        </nz-list-item>
+
+      </ng-template>
+    </nz-list>
+
+  </div>
+</div>

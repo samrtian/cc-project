@@ -1,0 +1,35 @@
+<div class="app-base-container">
+    <div class="app-base-item">
+        当前值：{{defaultValue}}
+    </div>
+    <nz-radio-group [(ngModel)]="type" (ngModelChange)="change($event)">
+        <div class="app-base-item">
+            <label nz-radio [nzValue]="typeEvery" [nzDisabled]="disabled">每时</label>
+        </div>
+        <div class="app-base-item">
+            <label nz-radio [nzValue]="typeRange" [nzDisabled]="disabled">区间</label>
+            从
+            <nz-input-number class="app-base-input" [(ngModel)]="valueRange.start" [nzMin]="minValue" [nzMax]="maxValue" (ngModelChange)="change($event)"
+                [nzStep]="1" [nzPrecision]="0" [nzDisabled]="type!=typeRange || disabled" [nzSize]="inputSize"></nz-input-number> 时
+            至
+            <nz-input-number class="app-base-input" [(ngModel)]="valueRange.end" [nzMin]="minValue" [nzMax]="maxValue" [nzStep]="1" (ngModelChange)="change($event)"
+                [nzPrecision]="0" [nzDisabled]="type!=typeRange || disabled" [nzSize]="inputSize"></nz-input-number> 时
+        </div>
+        <div class="app-base-item">
+            <label nz-radio [nzValue]="typeLoop" [nzDisabled]="disabled">循环</label>
+            从
+            <nz-input-number class="app-base-input" [(ngModel)]="valueLoop.start" [nzMin]="minValue" [nzMax]="maxValue" (ngModelChange)="change($event)"
+                [nzStep]="1" [nzPrecision]="0" [nzDisabled]="type!=typeLoop || disabled" [nzSize]="inputSize"></nz-input-number>
+            时开始，间隔
+            <nz-input-number class="app-base-input" [(ngModel)]="valueLoop.interval" [nzMin]="minValue" [nzMax]="maxValue" (ngModelChange)="change($event)"
+                [nzStep]="1" [nzPrecision]="0" [nzDisabled]="type!=typeLoop || disabled" [nzSize]="inputSize"></nz-input-number>
+            时
+        </div>
+        <div class="app-base-item">
+            <label nz-radio [nzValue]="typeSecify" [nzDisabled]="disabled">指定</label>
+            <div class="app-base-val-list">
+                <nz-checkbox-group [(ngModel)]="valueList" (ngModelChange)="change($event)"  [nzDisabled]="type!=typeSecify || disabled"></nz-checkbox-group>
+            </div>
+        </div>
+    </nz-radio-group>
+</div>

@@ -1,0 +1,40 @@
+<div>
+    <div appPageTool [btnsTpl]="btnsTpl">
+        <ng-template #btnsTpl>
+            <app-business-tool-btn [buttonList]="buttonList" (btnClick)="onBtnClick($event)">
+            </app-business-tool-btn>
+        </ng-template>
+    </div>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+            <app-line-title title="基本信息"></app-line-title>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">地址名称</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.accessUrlData?.accessUrlName || '无'}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">地址</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.accessUrlData?.accessUrl || '无'}}
+        </nz-form-control>
+    </nz-form-item>
+
+
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">业务标识</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{(resultData?.accessUrlData?.busniessMark|dataDicPipe:[resultData?.BUSNIESS_MARK_TYPE,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">状态</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{(resultData?.accessUrlData?.status|dataDicPipe:[resultData?.STATUS_TYPE,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+    </nz-form-item>
+</div>

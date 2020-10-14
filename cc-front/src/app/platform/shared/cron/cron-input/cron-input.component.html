@@ -1,0 +1,14 @@
+<div class="app-cron-input-container">
+    <input nz-input [placeholder]="placeholder" [readOnly]="true" [nzSize]="inputSize" [(ngModel)]="value" nz-popover
+        [nzPopoverTitle]="popoverTitle" [(nzVisible)]="visible" (nzVisibleChange)="visibleChanged($event)"
+        [nzPopoverTrigger]="cronInputTrigger" [nzPopoverPlacement]="popoverPlacement" [disabled]="disabled"
+        [nzPopoverContent]="cronContentTemplate" />
+    <ng-template #cronContentTemplate>
+        <app-cron [(ngModel)]="value" [disabled]="disabled" [inputSize]="inputSize" [minYear]="minYear"
+            [maxYear]="maxYear" [useYear]="useYear" [showYear]="showYear" [showWeek]="showWeek" [showMonth]="showMonth"
+            [showDay]="showDay" [showHour]="showHour" [showMinute]="showMinute" [showSecond]="showSecond"
+            [second]="second" [minute]="minute" [hour]="hour" [day]="day" [month]="month" [week]="week" [year]="year"
+            [style]="style" (ngModelChange)="cronChange($event)">
+        </app-cron>
+    </ng-template>
+</div>

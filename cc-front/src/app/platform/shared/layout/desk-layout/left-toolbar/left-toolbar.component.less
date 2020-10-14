@@ -1,0 +1,143 @@
+@import '../../../../../../assets/platform/less/theme/app.less';
+
+.app-left-toolbar-container {
+  width             : @app-left-toolbar-width;
+  height            : 100%;
+  background        : @app-left-toolbar-bg;
+  -webkit-box-shadow: @app-left-toolbar-shadow;
+  -moz-box-shadow   : @app-left-toolbar-shadow;
+  box-shadow        : @app-left-toolbar-shadow;
+  position          : relative;
+  z-index           : 9;
+  text-align        : center;
+
+  .app-left-toolbar-logo-container {
+    background : @app-left-toolbar-logo-bg;
+    height     : @app-left-toolbar-logo-height;
+    line-height: @app-left-toolbar-logo-height;
+
+    img {
+      width : 32px;
+      height: 32px;
+    }
+  }
+
+
+  .app-left-toolbar-nav-default {
+    height :~"-webkit-calc(100vh - @{app-left-toolbar-logo-height})";
+    height :~"calc(100vh - @{app-left-toolbar-logo-height})";
+  }
+
+  .app-left-toolbar-nav-full {
+    height: 100vh
+  }
+
+  .app-left-toolbar-nav {
+    display        : flex;
+    display        : -webkit-flex;
+    flex-direction : column;
+    justify-content: space-between;
+
+
+    .app-left-toolbar-nav-item {
+      font-size    : @app-left-toolbar-nav-item-font-size;
+      border-radius: @app-left-toolbar-nav-item-radius;
+      cursor       : pointer;
+      color        : @app-left-toolbar-nav-item-color;
+      padding      : 10px;
+      background   : @app-left-toolbar-nav-item-bg;
+
+      &:hover {
+        background: @app-left-toolbar-nav-item-hover-bg;
+        color     : @app-left-toolbar-nav-item-hover-color;
+        transition: all 0.3s;
+      }
+
+    }
+
+    .app-left-item-avatar {
+      margin-bottom: 0px;
+
+      .app-nav-item-avatar {
+        width     : 100%;
+        height    : 100%;
+        text-align: center;
+        display        : flex;
+        display        : -webkit-flex;
+        flex-direction : column;
+        justify-content: center;
+        align-items: center;
+        padding      : 5px;
+        img {
+          width        : 36px;
+          height       : 36px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .app-nav-user-menu-popover-backdrop {
+    position        : fixed;
+    top             : 0;
+    right           : 0;
+    bottom          : 0;
+    left            : 0;
+    z-index         : 888;
+    background-color: transparent;
+    width           : 100vw;
+    height          : 100vh;
+
+    .app-nav-user-menu-popover {
+      width             : 130px;
+      position          : fixed;
+      left              : @app-left-toolbar-width;
+      bottom            : 3px;
+      border-radius     : @app-border-radius-base;
+      margin-left       : 2px;
+      -webkit-box-shadow: @app-left-toolbar-popover-shadow;
+      -moz-box-shadow   : @app-left-toolbar-popover-shadow;
+      box-shadow        : @app-left-toolbar-popover-shadow;
+
+      /deep/ .ant-menu-root.ant-menu-vertical {
+        border-radius: @app-border-radius-base;
+        border-right : 0;
+      }
+
+      /deep/ .ant-menu-item {
+        margin-bottom: 0;
+        margin-top   : 0;
+      }
+    }
+  }
+
+  .app-menu-popover-backdrop {
+    position        : fixed;
+    top             : 0;
+    right           : 0;
+    bottom          : 0;
+    left            : 0;
+    z-index         : 888;
+    background-color: rgba(0, 0, 0, 0.0);
+    width           : 100vw;
+    height          : 100vh;
+
+
+    .app-menu-popover {
+      position          : fixed;
+      top               : 0;
+      right             : 0;
+      bottom            : 0;
+      left              : @app-left-toolbar-width;
+      z-index           : 889;
+      background-color  : @app-left-toolbar-menu-bg;
+      width             : @app-left-toolbar-menu-width;
+      height            : 100vh;
+      -webkit-box-shadow: @app-left-toolbar-popover-shadow;
+      -moz-box-shadow   : @app-left-toolbar-popover-shadow;
+      box-shadow        : @app-left-toolbar-popover-shadow;
+    }
+  }
+
+
+}

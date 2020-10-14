@@ -1,0 +1,53 @@
+<div>
+    <div class="app-data-table-container app-margin-top10">
+        <nz-form-item>
+            <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+                <app-line-title title="列表信息"></app-line-title>
+            </nz-form-control>
+        </nz-form-item>
+        <ng-template #tableShowTotalTpl let-range="range" let-total>
+            共 {{ total }} 条数据，当前显示 {{ range[0] }} 到 {{ range[1] }}
+        </ng-template>
+        <nz-table #listTable [nzData]="list" [nzBordered]="true" [nzFrontPagination]="false" [nzSize]="'middle'"
+            [(nzPageIndex)]="queryParams.page" [(nzPageSize)]="queryParams.rows" [nzTotal]="queryParams.total"
+            [nzPageSizeOptions]="queryParams.pageSizeOptions" [nzShowSizeChanger]="true"
+            [nzShowTotal]="tableShowTotalTpl" (nzPageIndexChange)="query()" (nzPageSizeChange)="query()">
+            <thead>
+                <tr>
+                    <th [nzWidth]="'70px'">序号</th>
+                    <th>姓名</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listTable.data;let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.name}}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+            <app-qrcode [value]="'我是一个二维码'"></app-qrcode>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+            <app-cron [(ngModel)]="cron" (ngModelChange)="cronChange($event)" [showSecond]="false"
+                [inputSize]="'small'">
+            </app-cron>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+            <app-cron-input [(ngModel)]="cron" (ngModelChange)="cronChange($event)"></app-cron-input>
+        </nz-form-control>
+    </nz-form-item>
+
+
+
+
+</div>

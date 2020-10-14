@@ -1,0 +1,62 @@
+<div>
+    <div appPageTool></div>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24" [style]="{'margin-top':'-10px'}">
+            <app-line-title title="查询条件"></app-line-title>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="8" nzXl="8">
+            <nz-form-item>
+                <nz-form-label nzSm="24" nzMd="24" nzLg="5" nzXl="4">用户</nz-form-label>
+                <nz-form-control nzSm="24" nzMd="24" nzLg="18" nzXl="19">
+                    <nz-select [(ngModel)]="queryParams.queryUserId" nzShowSearch nzPlaceHolder="请选择...">
+                        <nz-option [nzValue]="user.userId" [nzLabel]="user.realName"
+                            *ngFor="let user of userOptionList">
+                        </nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </nz-form-control>
+
+        <nz-form-control nzSm="24" nzMd="24" nzLg="8" nzXl="8">
+            <button nz-button nzType="primary" (click)="query(true)" [disabled]="!queryParams.queryUserId"><i nz-icon
+                    nzType="search"></i>查询</button>
+        </nz-form-control>
+    </nz-form-item>
+
+    <div class="app-data-table-container app-margin-top10">
+        <nz-form-item>
+            <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+                <app-line-title title="列表信息"></app-line-title>
+            </nz-form-control>
+        </nz-form-item>
+        <ng-template #tableShowTotalTpl let-range="range" let-total>
+            共 {{ total }} 条数据，当前显示 {{ range[0] }} 到 {{ range[1] }}
+        </ng-template>
+        <nz-table #listTable [nzData]="list" [nzBordered]="true" [nzFrontPagination]="false" [nzSize]="'middle'"
+            [(nzPageIndex)]="queryParams.page" [(nzPageSize)]="queryParams.rows" [nzTotal]="queryParams.total"
+            [nzPageSizeOptions]="queryParams.pageSizeOptions" [nzShowSizeChanger]="true"
+            [nzShowTotal]="tableShowTotalTpl" (nzPageIndexChange)="query()" (nzPageSizeChange)="query()">
+            <thead>
+                <tr>
+                    <th [nzWidth]="'70px'">序号</th>
+                    <th>用户</th>
+                    <th>登录IP</th>
+                    <th>登录时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listTable.data;let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.createUser}}</td>
+                    <td>{{item.loginIP}}</td>
+                    <td>{{item.createDate}}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+
+</div>

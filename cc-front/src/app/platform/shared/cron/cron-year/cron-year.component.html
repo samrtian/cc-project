@@ -1,0 +1,34 @@
+<div class="app-base-container">
+    <div class="app-base-item">
+        当前值：{{defaultValue}}
+    </div>
+    <nz-radio-group [(ngModel)]="type" (ngModelChange)="change($event)">
+        <div class="app-base-item">
+            <label nz-radio [nzValue]="typeEvery" [nzDisabled]="disabled">每年</label>
+        </div>
+        <div class="app-base-item">
+            <label nz-radio [nzValue]="typeRange" [nzDisabled]="disabled">区间</label>
+            从
+            <nz-input-number class="app-base-input" [(ngModel)]="valueRange.start" [nzMin]="minValue" [nzMax]="maxValue"
+                (ngModelChange)="change($event)" [nzStep]="1" [nzPrecision]="0" [nzSize]="inputSize"
+                [nzDisabled]="type!=typeRange || disabled"></nz-input-number> 年
+            至
+            <nz-input-number class="app-base-input" [(ngModel)]="valueRange.end" [nzMin]="minValue" [nzMax]="maxValue"
+                [nzStep]="1" (ngModelChange)="change($event)" [nzPrecision]="0" [nzSize]="inputSize"
+                [nzDisabled]="type!=typeRange || disabled">
+            </nz-input-number> 年
+        </div>
+        <div class="app-base-item">
+            <label nz-radio [nzValue]="typeLoop" [nzDisabled]="disabled">循环</label>
+            从
+            <nz-input-number class="app-base-input" [(ngModel)]="valueLoop.start" [nzMin]="minValue" [nzStep]="1" [nzSize]="inputSize"
+                [nzPrecision]="0" (ngModelChange)="change($event)" [nzDisabled]="type!=typeLoop || disabled">
+            </nz-input-number>
+            年开始，间隔
+            <nz-input-number class="app-base-input" [(ngModel)]="valueLoop.interval" [nzMin]="minValue" [nzStep]="1" [nzSize]="inputSize"
+                (ngModelChange)="change($event)" [nzPrecision]="0" [nzDisabled]="type!=typeLoop || disabled">
+            </nz-input-number>
+            年
+        </div>
+    </nz-radio-group>
+</div>

@@ -1,0 +1,53 @@
+<div class="app-base-container">
+    <div class="app-base-item">
+        当前值：{{defaultValue}}
+    </div>
+    <nz-radio-group [(ngModel)]="type" (ngModelChange)="change($event)">
+        <div class="app-base-item">
+            <label nz-radio [nzValue]="typeNotSet"
+                [nzDisabled]="(this.day && this.day !== '?') || this.disabled">不设置</label>
+            <span class="app-base-tip-msg">日和周只能设置其中之一</span>
+        </div>
+        <div class="app-base-item">
+            <label nz-radio [nzValue]="typeRange"
+                [nzDisabled]="(this.day && this.day !== '?') || this.disabled">区间</label>
+            从
+
+            <nz-select [(ngModel)]="valueRange.start"  class="app-base-select" [nzSize]="inputSize"
+                (ngModelChange)="change($event)"
+                [nzDisabled]="type!=typeRange || (this.day && this.day !== '?') || this.disabled">
+                <nz-option [nzValue]="item.value" [nzLabel]="item.label" *ngFor="let item  of weekMapList"></nz-option>
+            </nz-select>
+            至
+            <nz-select [(ngModel)]="valueRange.end" class="app-base-select" [nzSize]="inputSize"
+                (ngModelChange)="change($event)"
+                [nzDisabled]="type!=typeRange || (this.day && this.day !== '?') || this.disabled">
+                <nz-option [nzValue]="item.value" [nzLabel]="item.label" *ngFor="let item  of weekMapList"></nz-option>
+            </nz-select>
+        </div>
+        <div class="app-base-item">
+            <label nz-radio [nzValue]="typeLoop"
+                [nzDisabled]="(this.day && this.day !== '?') || this.disabled">循环</label>
+            从
+            <nz-select [(ngModel)]="valueLoop.start"  class="app-base-select" [nzSize]="inputSize"
+                (ngModelChange)="change($event)"
+                [nzDisabled]="type!=typeLoop || (this.day && this.day !== '?') || this.disabled">
+                <nz-option [nzValue]="item.value" [nzLabel]="item.label" *ngFor="let item  of weekMapList"></nz-option>
+            </nz-select>
+            开始，间隔
+            <nz-input-number class="app-base-input" [(ngModel)]="valueLoop.interval" [nzMin]="minValue" [nzSize]="inputSize"
+                [nzMax]="maxValue" (ngModelChange)="change($event)" [nzStep]="1" [nzPrecision]="0"
+                [nzDisabled]="type!=typeLoop || (this.day && this.day !== '?') || this.disabled"></nz-input-number>
+            天
+        </div>
+        <div class="app-base-item">
+            <label nz-radio [nzValue]="typeSecify"
+                [nzDisabled]="(this.day && this.day !== '?') || this.disabled">指定</label>
+            <div class="app-base-val-list">
+                <nz-checkbox-group [(ngModel)]="valueList" (ngModelChange)="change($event)"
+                    [nzDisabled]="type!=typeSecify || (this.day && this.day !== '?') || this.disabled">
+                </nz-checkbox-group>
+            </div>
+        </div>
+    </nz-radio-group>
+</div>

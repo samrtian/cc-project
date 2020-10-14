@@ -1,0 +1,90 @@
+<div>
+    <div appPageTool [btnsTpl]="btnsTpl">
+        <ng-template #btnsTpl>
+            <app-business-tool-btn [buttonList]="buttonList" (btnClick)="onBtnClick($event)"></app-business-tool-btn>
+        </ng-template>
+    </div>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24" [style]="{'margin-top':'-10px'}">
+            <app-line-title title="查询条件"></app-line-title>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="8" nzXl="8">
+            <nz-form-item>
+                <nz-form-label nzSm="24" nzMd="24" nzLg="6" nzXl="5">按钮名称</nz-form-label>
+                <nz-form-control nzSm="24" nzMd="24" nzLg="17" nzXl="18">
+                    <input nz-input placeholder="请输入..." [(ngModel)]="queryParams.buttonName" />
+                </nz-form-control>
+            </nz-form-item>
+        </nz-form-control>
+
+        <nz-form-control nzSm="24" nzMd="24" nzLg="8" nzXl="8">
+            <nz-form-item>
+                <nz-form-label nzSm="24" nzMd="24" nzLg="6" nzXl="5">业务标识</nz-form-label>
+                <nz-form-control nzSm="24" nzMd="24" nzLg="17" nzXl="18">
+                    <nz-select [(ngModel)]="queryParams.busniessMark" nzShowSearch nzAllowClear nzPlaceHolder="请选择...">
+                        <nz-option [nzValue]="mark.dicItemValue" [nzLabel]="mark.dicItemName"
+                            *ngFor="let mark of busniessMarkOptionList">
+                        </nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </nz-form-control>
+
+        <nz-form-control nzSm="24" nzMd="24" nzLg="8" nzXl="8">
+            <button nz-button nzType="primary" (click)="query(true)"><i nz-icon nzType="search"></i>查询</button>
+        </nz-form-control>
+
+    </nz-form-item>
+
+    <div class="app-data-table-container app-margin-top10">
+        <nz-form-item>
+            <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+                <app-line-title title="列表信息"></app-line-title>
+            </nz-form-control>
+        </nz-form-item>
+        <ng-template #tableShowTotalTpl let-range="range" let-total>
+            共 {{ total }} 条数据，当前显示 {{ range[0] }} 到 {{ range[1] }}
+        </ng-template>
+        <nz-table #listTable [nzData]="list" [nzBordered]="true" [nzFrontPagination]="false" [nzSize]="'middle'"
+            [(nzPageIndex)]="queryParams.page" [(nzPageSize)]="queryParams.rows" [nzTotal]="queryParams.total"
+            [nzPageSizeOptions]="queryParams.pageSizeOptions" [nzShowSizeChanger]="true"
+            [nzShowTotal]="tableShowTotalTpl" (nzPageIndexChange)="query()" (nzPageSizeChange)="query()">
+            <thead>
+                <tr>
+                    <th nzShowCheckbox (nzCheckedChange)="checkAll($event)"></th>
+                    <th [nzWidth]="'70px'">序号</th>
+                    <th>业务标识</th>
+                    <th>按钮编号</th>
+                    <th>按钮名称</th>
+                    <th>布局标识</th>
+                    <th [nzWidth]="'70px'">状态</th>
+                    <th>创建时间</th>
+                    <th>修改时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listTable.data;let i = index">
+                    <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[item.buttonId]"></td>
+                    <td>{{i+1}}</td>
+                    <td>{{(item.busniessMark|dataDicPipe:[busniessMarkOptionList,'dicItemValue'])?.dicItemName}}</td>
+                    <td>{{item.buttonCode}}</td>
+                    <td>{{item.buttonName}}</td>
+                    <td>{{(item.layoutMark|dataDicPipe:[layoutMarkOptionList,'dicItemValue'])?.dicItemName}}</td>
+                    <td>{{(item.status|dataDicPipe:[statusOptionList,'dicItemValue'])?.dicItemName}}</td>
+                    <td>{{item.createDate}}</td>
+                    <td>{{item.updateDate}}</td>
+                    <td>
+                        <app-business-row-btn [buttonList]="buttonList" (btnClick)="onBtnClick($event,item)">
+                        </app-business-row-btn>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+
+</div>

@@ -1,0 +1,126 @@
+<div class="app-main-default-np-container">
+    <div appPageTool [btnsTpl]="btnsTpl">
+        <ng-template #btnsTpl>
+            <app-business-tool-btn [buttonList]="buttonList" (btnClick)="onBtnClick($event)"></app-business-tool-btn>
+        </ng-template>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzSpan="7" class="app-dept-tree-container" appScrollbar appContainerCss
+            [defaultCls]="'app-layout-content-np-container'" [rendererCls]="'app-desk-layout-content-np-container'"
+            [matchRouters]="matchRouters">
+
+            <div class="app-dept-tree-title">
+                <nz-form-item>
+                    <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="7">
+                        <app-line-title title="部门结构"></app-line-title>
+                    </nz-form-control>
+                    <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="17">
+                        <app-business-tool-btn [buttonList]="buttonList" [layoutMark]="layoutMark.leftToolBtn"
+                            [btnSize]="'small'" (btnClick)="onBtnClick($event)">
+                        </app-business-tool-btn>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+            <nz-form-item>
+                <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+                    <nz-input-group [nzSuffix]="suffixIcon">
+                        <input type="text" nz-input placeholder="输入部门名称..." [(ngModel)]="searchValue" />
+                    </nz-input-group>
+                    <ng-template #suffixIcon>
+                        <i nz-icon nzType="search"></i>
+                    </ng-template>
+
+                    <nz-tree #deptTree class="app-margin-top10" [nzData]="list" nzBlockNode="true" nzShowIcon="true"
+                        nzCheckable="true" nzCheckStrictly="true" [nzSearchValue]="searchValue"
+                        (nzClick)="deptView($event)">
+                    </nz-tree>
+
+                </nz-form-control>
+            </nz-form-item>
+
+        </div>
+        <div nz-col nzSpan="17" class="app-dept-info-container" appScrollbar appContainerCss
+            [defaultCls]="'app-layout-content-np-container'" [rendererCls]="'app-desk-layout-content-np-container'"
+            [matchRouters]="matchRouters">
+            <nz-form-item>
+                <nz-form-control nzSm="24" nzMd="24" nzLg="12" nzXl="12" [style]="{'margin-top':'-10px'}">
+                    <app-line-title title="部门信息"></app-line-title>
+                </nz-form-control>
+                <nz-form-control nzSm="24" nzMd="24" nzLg="12" nzXl="12" [style]="{'margin-top':'-10px'}">
+                    <ng-container *ngIf="deptData">
+                        <app-business-tool-btn [buttonList]="buttonList" [layoutMark]="layoutMark.rightToolBtn"
+                            [btnSize]="'small'" (btnClick)="onBtnClick($event)">
+                        </app-business-tool-btn>
+                    </ng-container>
+                </nz-form-control>
+            </nz-form-item>
+
+            <ng-container *ngIf="deptData">
+                <nz-form-item>
+                    <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">编号</nz-form-label>
+                    <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+                        {{deptData?.deptCode || '无'}}
+                    </nz-form-control>
+
+                    <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">名称</nz-form-label>
+                    <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+                        {{deptData?.deptName || '无'}}
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">简称</nz-form-label>
+                    <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+                        {{deptData?.deptSortName || '无'}}
+                    </nz-form-control>
+
+                    <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">级别</nz-form-label>
+                    <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+                        {{deptData?.deptLevel || '无'}}
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">负责人</nz-form-label>
+                    <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+                        {{deptData?.deptLeader || '无'}}
+                    </nz-form-control>
+
+                    <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">图标</nz-form-label>
+                    <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+                        <i nz-icon [nzType]="deptData?.iconCls" nzTheme="outline"
+                            *ngIf="deptData &&deptData.iconCls"></i>
+                        {{deptData?.iconCls || '无'}}
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">地址</nz-form-label>
+                    <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+                        {{deptData?.deptAddr || '无'}}
+                    </nz-form-control>
+
+
+                    <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">联系电话</nz-form-label>
+                    <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+                        {{deptData?.deptTel || '无'}}
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">简称</nz-form-label>
+                    <nz-form-control nzSm="24" nzMd="19" nzLg="21" nzXl="22">
+                        {{deptData?.deptDescript || '无'}}
+                    </nz-form-control>
+                </nz-form-item>
+            </ng-container>
+
+            <nz-form-item *ngIf="!deptData">
+                <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+                    <div class="app-dept-empty">
+                        <app-custom-empty [content]="'请点击查看部门信息！'"></app-custom-empty>
+                    </div>
+                </nz-form-control>
+            </nz-form-item>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="app-spinning" [hidden]="!show">
+  <div class="app-spinning-backdrop"></div>
+  <div class="app-spinning-container">
+    <nz-spin [nzTip]="'加载中'" nzSimple [nzSize]="'large'" [nzIndicator]="indicatorTemplate"></nz-spin>
+    <ng-template #indicatorTemplate>
+      <img src="assets/platform/img/spinning/spinning.svg" class="app-spinning-img">
+    </ng-template>
+  </div>
+</div>

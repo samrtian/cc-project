@@ -1,4 +1,6 @@
 # 一个Angular+Spring Boot前后端分离基础权限框架
+<img src="https://img-blog.csdnimg.cn/20200201171910752.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3JvdGF0aW5nX3dpbmRtaWxs,size_16,color_FFFFFF,t_70">
+<br>
 
 ## 相关说明：
 

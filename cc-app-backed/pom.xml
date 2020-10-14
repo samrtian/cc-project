@@ -18,7 +18,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
 		<commons-lang.version>2.4</commons-lang.version>
-		<junit.version>3.8</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<commons-logging.version>1.1.1</commons-logging.version>
 		<javax-servlet-jstl.version>1.2</javax-servlet-jstl.version>
 		<taglibs.version>1.1.2</taglibs.version>

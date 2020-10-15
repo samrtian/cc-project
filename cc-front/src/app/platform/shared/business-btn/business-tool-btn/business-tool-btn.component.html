@@ -1,8 +1,0 @@
-<div class="app-tool-btn-container">
-  <ng-container *ngFor="let btn of btnList;let i = index">
-    <button nz-button [nzType]="btn.btnCls" [ngClass]="'ant-btn-'+btn.btnCls" (click)="btnHandler(btn.functionName)" [nzSize]="btnSize">
-      <i nz-icon [nzType]="btn.iconCls" theme="outline"></i>
-      {{btn.buttonName}} 
-    </button>
-  </ng-container>
-</div>

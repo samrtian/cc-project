@@ -1,0 +1,70 @@
+<div class="app-main-default-container">
+    <div appPageTool [btnsTpl]="btnsTpl">
+        <ng-template #btnsTpl>
+            <app-business-tool-btn [buttonList]="buttonList" (btnClick)="onBtnClick($event)">
+            </app-business-tool-btn>
+        </ng-template>
+    </div>
+
+
+    <form nz-form [formGroup]="saveForm">
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24">
+                <app-line-title title="基本信息"></app-line-title>
+            </nz-form-label>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>编号</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="编号格式不正确（格式：3-15位字符）!">
+                <input type="text" nz-input formControlName="menuCode" placeholder="请输入..." />
+            </nz-form-control>
+
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>名称</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip=" 名称格式不正确（格式：1-50位字符）!">
+                <input type="text" nz-input formControlName="menuName" placeholder="请输入..." />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>序号</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="序号格式不正确（格式：1-3个数字）!">
+                <nz-input-number formControlName="sortNum" nzPlaceHolder="请输入..." [nzMin]="1" [nzMax]="999"
+                    [nzStep]="1"></nz-input-number>
+            </nz-form-control>
+
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>图标</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="图标格式不正确（格式：1-32个字符）！">
+                <input type="text" nz-input formControlName="iconCls" placeholder="请输入..." />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>上一级</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="请选择上一级！">
+                <nz-tree-select #parentMenuTreeSelect [nzNodes]="menuOptionList" formControlName="parentMenuId"
+                    nzShowSearch="true" nzAllowClear="false" nzPlaceHolder="请选择..."
+                    [nzDropdownStyle]="{'max-height':'300px'}" (ngModelChange)="selectParentMenu($event)">
+                </nz-tree-select>
+            </nz-form-control>
+
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2">级别</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10">
+                <input type="number" nz-input formControlName="menuLevel" placeholder="请输入..." [readonly]="true" />
+            </nz-form-control>
+
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2">访问地址</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="访问地址格式不正确（格式：0-150个字符）">
+                <input type="text" nz-input formControlName="accessUrl" placeholder="请输入..." />
+            </nz-form-control>
+        </nz-form-item>
+
+
+
+
+    </form>
+
+</div>

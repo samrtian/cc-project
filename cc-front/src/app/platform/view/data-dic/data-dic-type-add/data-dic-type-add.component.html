@@ -1,0 +1,47 @@
+<div class="app-main-default-container">
+    <div appPageTool [btnsTpl]="btnsTpl">
+        <ng-template #btnsTpl>
+            <app-business-tool-btn [buttonList]="buttonList" (btnClick)="onBtnClick($event)">
+            </app-business-tool-btn>
+        </ng-template>
+    </div>
+
+
+    <form nz-form [formGroup]="saveForm">
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24">
+                <app-line-title title="基本信息"></app-line-title>
+            </nz-form-label>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>编号</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="编号格式不正确（格式：1-30个字符）!">
+                <input type="text" nz-input formControlName="dicTypeCode" placeholder="请输入..." />
+            </nz-form-control>
+
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>名称</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="名称格式不正确（格式：1-30个字符）!">
+                <input type="text" nz-input formControlName="dicTypeName" placeholder="请输入..." />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>字典组</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="请选择字典组!">
+                <nz-select formControlName="dicCategory" nzShowSearch nzAllowClear nzPlaceHolder="请选择...">
+                    <nz-option [nzValue]="item.dicItemValue" [nzLabel]="item.dicItemName"
+                        *ngFor="let item  of dicCategoryOptionList">
+                    </nz-option>
+                </nz-select>
+            </nz-form-control>
+
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>图标</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="图标格式不正确（格式：1-32个字符）！">
+                <input type="text" nz-input formControlName="iconCls" placeholder="请输入..." />
+            </nz-form-control>
+        </nz-form-item>
+
+    </form>
+
+</div>

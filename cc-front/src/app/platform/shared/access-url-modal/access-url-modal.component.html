@@ -1,0 +1,67 @@
+<div>
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24" [style]="{'margin-top':'-10px'}">
+            <app-line-title title="查询条件"></app-line-title>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="16" nzXl="16">
+            <nz-form-item>
+                <nz-form-label nzSm="24" nzMd="24" nzLg="6" nzXl="5">地址名称</nz-form-label>
+                <nz-form-control nzSm="24" nzMd="24" nzLg="17" nzXl="18">
+                    <input nz-input placeholder="请输入..." [(ngModel)]="queryParams.accessUrlName" />
+                </nz-form-control>
+            </nz-form-item>
+        </nz-form-control>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="8" nzXl="8">
+            <button nz-button nzType="primary" (click)="query(true)"><i nz-icon nzType="search"></i>查询</button>
+        </nz-form-control>
+    </nz-form-item>
+
+
+    <div class="app-data-table-container app-margin-top10">
+        <nz-form-item>
+            <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+                <app-line-title title="列表信息"></app-line-title>
+            </nz-form-control>
+        </nz-form-item>
+        <ng-template #tableShowTotalTpl let-range="range" let-total>
+            共 {{ total }} 条数据，当前显示 {{ range[0] }} 到 {{ range[1] }}
+        </ng-template>
+        <nz-table #listTable [nzData]="list" [nzBordered]="true" [nzFrontPagination]="false" [nzSize]="'middle'"
+            [(nzPageIndex)]="queryParams.page" [(nzPageSize)]="queryParams.rows" [nzTotal]="queryParams.total"
+            [nzPageSizeOptions]="queryParams.pageSizeOptions" [nzShowSizeChanger]="true"
+            [nzShowTotal]="tableShowTotalTpl" (nzPageIndexChange)="query()" (nzPageSizeChange)="query()">
+            <thead>
+                <tr>
+                    <ng-container *ngIf="!singleSelect">
+                        <th nzShowCheckbox (nzCheckedChange)="checkAll($event)"></th>
+                    </ng-container>
+                    <th>序号</th>
+                    <th>地址名称</th>
+                    <th>地址</th>
+                    <ng-container *ngIf="singleSelect">
+                        <th [nzAlign]="'center'">操作</th>
+                    </ng-container>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listTable.data;let i = index">
+                    <ng-container *ngIf="!singleSelect">
+                        <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[item.accessUrlId]"></td>
+                    </ng-container>
+                    <td>{{i+1}}</td>
+                    <td>{{item.accessUrlName}}</td>
+                    <td>{{item.accessUrl}}</td>
+                    <ng-container *ngIf="singleSelect">
+                        <td [nzAlign]="'center'">
+                        <button nz-button nzType="primary" nzSize="small" (click)="selected(item)">{{btnTxt}}</button>
+                        </td>
+                    </ng-container>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+
+</div>

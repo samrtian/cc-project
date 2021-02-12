@@ -1,0 +1,111 @@
+@import '../../../../../assets/platform/less/theme/app.less';
+
+.app-treeview-menu {
+  display   : block;
+  list-style: none;
+  padding   : 0;
+  margin    : 0;
+}
+
+
+.app-left-toolbar-tree-menu {
+  li {
+    padding: 0;
+    margin : 0;
+
+    a {
+      border         : 0px;
+      display        : -webkit-box;
+      display        : flex;
+      flex-direction : row;
+      justify-content: space-between;
+      height         : 36px;
+      line-height    : 36px;
+      font-size      : @app-left-toolbar-menu-font-size;
+      color          : @app-left-toolbar-menu-font-color;
+      background     : transparent;
+
+      .app-node {
+        width    : 25px;
+        font-size:~"-webkit-calc(@{app-left-toolbar-menu-font-size} - 3px)";
+        font-size:~"calc(@{app-left-toolbar-menu-font-size} - 3px)";
+      }
+
+      i {
+        width: 25px !important;
+      }
+
+      .app-node-icon {
+        margin-left: 0px;
+      }
+
+      &:hover {
+        background        : @app-left-toolbar-menu-bg-hover-color;
+        color             : @app-left-toolbar-menu-font-hover-color;
+        -webkit-transition: 0.2s;
+        transition        : 0.2s;
+        -moz-transition   : 0.2s;
+        -o-transition     : 0.2s;
+        border-radius     : 2px;
+        cursor            : pointer;
+      }
+
+      &:active {
+        background: @app-left-toolbar-menu-bg-hover-color;
+        color     : @app-left-toolbar-menu-font-color;
+      }
+
+    }
+  }
+}
+
+.app-sider-tree-menu {
+  li {
+    padding: 0;
+    margin : 0;
+
+    a {
+      border         : 0px;
+      display        : -webkit-box;
+      display        : flex;
+      flex-direction : row;
+      justify-content: space-between;
+      height         : 36px;
+      line-height    : 36px;
+      font-size      : @app-tree-menu-font-size;
+      color          : @app-tree-menu-font-color;
+      background     : transparent;
+
+      .app-node {
+        width    : 25px;
+        font-size:~"-webkit-calc(@{app-tree-menu-font-size} - 3px)";
+        font-size:~"calc(@{app-tree-menu-font-size} - 3px)";
+      }
+
+      i {
+        width: 25px !important;
+      }
+
+      .app-node-icon {
+        margin-left: 0px;
+      }
+
+      &:hover {
+        background        : @app-tree-menu-bg-hover-color;
+        color             : @app-tree-menu-font-hover-color;
+        -webkit-transition: 0.2s;
+        transition        : 0.2s;
+        -moz-transition   : 0.2s;
+        -o-transition     : 0.2s;
+        border-radius     : 2px;
+        cursor            : pointer;
+      }
+
+      &:active {
+        background: @app-tree-menu-bg-hover-color;
+        color     : @app-tree-menu-font-color;
+      }
+
+    }
+  }
+}

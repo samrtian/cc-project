@@ -1,0 +1,6 @@
+<nz-layout class="app-layout-main-container" appWaterMarker [options]="waterMarkerOptions">
+  <app-sider [showSider]="showSider" [userData]="userData" [menuData]="menuData" [userInfoRouter]="userInfoRouter"
+    (switchSiderChange)="showSider=$event">
+  </app-sider>
+  <app-content [showFull]="showSider"></app-content>
+</nz-layout>

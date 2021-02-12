@@ -1,0 +1,172 @@
+// =========== 公共 ===========
+// -------- Colors -----------
+@app-primary-color : #07d091;
+@app-info-color    : #00c587;
+@app-success-color : #27d1e0;
+@app-error-color   : #f13c79;
+@app-warning-color : #faad14;
+@app-normal-color  : #d9d9d9;
+@app-white-color   : #fff;
+@app-black-color   : #000;
+
+@app-hover-color: #d7eee2;
+
+@app-text-color               : fade(@app-black-color, 65%);
+@app-text-color-secondary     : fade(@app-black-color, 45%);
+@app-text-color-dark          : fade(@app-black-color, 85%);
+@app-text-color-secondary-dark: fade(@app-white-color, 65%);
+
+@app-primary-1: tint(@app-primary-color, 90%);
+
+@app-component-background: #fff;
+
+// -------- tree -----------
+@app-tree-node-hover-bg: @app-primary-1;
+
+// -------- border -----------
+@app-border-color-base  : hsv(0, 0, 85%);
+@app-border-color-split : hsv(0, 0, 91%);
+@app-border-width-base  : 1px;
+@app-border-style-base  : solid;
+@app-border-radius-base : 2px;
+@app-border-radius-sm   : 2px;
+
+// -------- media -----------
+@app-screen-xs     : 480px;
+@app-screen-xs-min : @app-screen-xs;
+
+@app-screen-sm     : 576px;
+@app-screen-sm-min : @app-screen-sm;
+
+@app-screen-md     : 768px;
+@app-screen-md-min : @app-screen-md;
+
+@app-screen-lg     : 992px;
+@app-screen-lg-min : @app-screen-lg;
+
+@app-screen-xl     : 1200px;
+@app-screen-xl-min : @app-screen-xl;
+
+// -------- shadow -----------
+@app-base-shadow : 0 2px 11px 0 rgba(190, 202, 218, .17);
+@app-hover-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+@app-light-shadow: 0 1px 5px 0 rgba(25, 50, 79, .07), 0 5px 10px 0 rgba(25, 50, 79, .1);
+
+
+// =========== 默认布局 ===========
+@app-basic-layout-bg: #f5f7fa;
+
+@app-layout-header-height              : 60px;
+@app-layout-header-shadow              : 0px 2px 5px rgba(0, 0, 0, 0.12);
+@app-layout-header-bg                  : #02bd83;
+@app-layout-header-left-right-space    : 15px;
+@app-layout-header-logo-bg             : transparent;
+@app-layout-header-logo-width          : 260px;
+@app-layout-header-logo-shadow         : transparent;
+@app-layout-header-logo-color          : #fafafa;
+@app-layout-header-logo-font-size      : 22px;
+@app-layout-header-nav-bg              : transparent;
+@app-layout-header-nav-shadow          : transparent;
+@app-layout-header-nav-item-bg         : #02bd83;
+@app-layout-header-nav-item-color      : #fafafa;
+@app-layout-header-nav-item-font-size  : 1.1em;
+@app-layout-header-nav-item-radius     : 3px;
+@app-layout-header-nav-item-hover-bg   : #3ddaa8;
+@app-layout-header-nav-item-hover-color: @app-white-color;
+@app-layout-header-switch-btn-display  : none;
+
+@app-layout-sider-width                  : 260px;
+@app-layout-sider-space                  : 1px;
+@app-layout-sider-bg                     : @app-white-color;
+@app-layout-sider-shadow                 : 1px 1px 1px @app-border-color-split;
+@app-layout-sider-switch-btn-bg          : @app-white-color;
+@app-layout-sider-switch-btn-stress-bg   : @app-primary-color;
+@app-layout-sider-switch-btn-color       : @app-text-color;
+@app-layout-sider-switch-btn-stress-color: @app-white-color;
+@app-layout-sider-switch-btn-shadow      : 2px 0px 2px rgba(155, 165, 163, .2);
+@app-layout-sider-switch-btn-display     : block;
+
+// -------- 布局 profile -----------
+@app-layout-profile-color          : @app-text-color;
+@app-layout-profile-act-color      : @app-text-color;
+@app-layout-profile-act-hover-color: @app-primary-color;
+
+// -------- 布局 tree menu -----------
+@app-tree-menu-input-bg                : @app-white-color;
+@app-tree-menu-input                   : @app-text-color;
+@app-tree-menu-input-color             : @app-text-color;
+@app-tree-menu-input-border-color      : lighten(@app-tree-menu-input, 30%);
+@app-tree-menu-input-border-hover-color: lighten(@app-tree-menu-input, 45%);
+@app-tree-menu-search-font-size        : 13px;
+@app-tree-menu-search-msg              : @app-text-color;
+@app-tree-menu-font-size               : 14px;
+@app-tree-menu-font-color              : @app-text-color-dark;
+@app-tree-menu-bg-hover-color          : #ccfcec;
+@app-tree-menu-font-hover-color        : @app-text-color-dark;
+
+// -------- 布局 content -----------
+@app-layout-content-padding-space: 15px;
+@app-layout-content-space        : 1px;
+@app-main-default-container-bg   : #fff;
+
+.app-main-container-size() {
+    height : 100%;
+    display: table;
+    width  : 100%;
+}
+
+
+// =========== 桌面布局 ===========
+@app-desk-layout-bg: #e8ecf1;
+
+// -------- 左侧工具栏 -----------
+@app-left-toolbar-width      : 70px;
+@app-left-toolbar-bg         : #02bd83;
+@app-left-toolbar-shadow     : 2px 0px 5px rgba(0, 0, 0, 0.12);
+@app-left-toolbar-logo-bg    : #02bd83;
+@app-left-toolbar-logo-height: 55px;
+
+@app-left-toolbar-nav-item-bg         : #02bd83;
+@app-left-toolbar-nav-item-color      : #fafafa;
+@app-left-toolbar-nav-item-font-size  : 20px;
+@app-left-toolbar-nav-item-radius     : 0px;
+@app-left-toolbar-nav-item-hover-bg   : #3ddaa8;
+@app-left-toolbar-nav-item-hover-color: #fafafa;
+@app-left-toolbar-popover-shadow      : 1px 1px 5px rgba(0, 0, 0, 0.35);
+
+// -------- tree menu -----------
+@app-left-toolbar-menu-width                   : 300px;
+@app-left-toolbar-menu-bg                      : @app-white-color;
+@app-left-toolbar-menu-input-bg                : @app-white-color;
+@app-left-toolbar-menu-input                   : @app-text-color;
+@app-left-toolbar-menu-input-color             : @app-text-color;
+@app-left-toolbar-menu-input-border-color      : lighten(@app-left-toolbar-menu-input, 40%);
+@app-left-toolbar-menu-input-border-hover-color: lighten(@app-left-toolbar-menu-input, 45%);
+@app-left-toolbar-menu-search-font-size        : 13px;
+@app-left-toolbar-menu-search-msg              : @app-text-color;
+@app-left-toolbar-menu-font-size               : 14px;
+@app-left-toolbar-menu-font-color              : @app-text-color-dark;
+@app-left-toolbar-menu-bg-hover-color          : #ccfcec;
+@app-left-toolbar-menu-font-hover-color        : @app-text-color-dark;
+
+// -------- 右侧主体 -----------
+
+// =========== 其它组件或页面 ===========
+// -------- btn tool -----------
+@app-btns-tool-height       : 55px;
+@app-btns-tool-bg           : @app-white-color;
+@app-btns-tool-border-bottom: @app-border-width-base @app-border-style-base @app-border-color-split;
+@app-btns-tool-height-zindex: 2;
+
+// -------- spinning -----------
+@app-spinning-bg: transparent;
+
+//user-profile
+@app-user-profile-height: 138px;
+
+// -------- login -----------
+@app-login-bg    : linear-gradient(88deg, #02c5d3 0, #07d091 50%);
+@app-login-bg-img: url(/assets/platform/img/login/default-login-bg.svg);
+@app-login-img   : url(/assets/platform/img/login/default-login-img.svg);
+@app-login-input-color:#000;
+@app-login-default-color:#555;

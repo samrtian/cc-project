@@ -1,0 +1,92 @@
+<div>
+    <div appPageTool [btnsTpl]="btnsTpl">
+        <ng-template #btnsTpl>
+            <app-business-tool-btn [buttonList]="buttonList" (btnClick)="onBtnClick($event)">
+            </app-business-tool-btn>
+        </ng-template>
+    </div>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+            <app-line-title title="基本信息"></app-line-title>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="6" nzLg="4" nzXl="3">数据权限名称</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="6" nzLg="8" nzXl="9">
+            {{resultData.dataPermissionsData?.dataPermissionsName || '无'}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="6" nzLg="4" nzXl="3">数据权限分组</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="6" nzLg="8" nzXl="9">
+            {{(resultData?.dataPermissionsData?.dataPermissionsCategory|dataDicPipe:[resultData?.DATA_PERMIT_CATEGORY,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="6" nzLg="4" nzXl="3">基本处理器</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="6" nzLg="8" nzXl="9">
+            {{resultData.dataPermissionsData?.primaryProcessor || '无'}}
+            {{(resultData?.dataPermissionsData?.primaryProcessor|dataDicPipe:[resultData?.DATA_PERMIT_PROCESSOR,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="6" nzLg="4" nzXl="3">辅助处理器</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="6" nzLg="8" nzXl="9">
+            {{resultData.dataPermissionsData?.secondaryProcessor || '无'}}
+            {{(resultData?.dataPermissionsData?.secondaryProcessor|dataDicPipe:[resultData?.DATA_PERMIT_PROCESSOR,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="6" nzLg="4" nzXl="3">处理器优先级</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="6" nzLg="8" nzXl="9">
+            {{resultData.dataPermissionsData?.processorPriority || '无'}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="6" nzLg="4" nzXl="3">匹配列名</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="6" nzLg="8" nzXl="9">
+            {{resultData.dataPermissionsData?.matchColumn || '无'}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="6" nzLg="4" nzXl="3">匹配地址</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="6" nzLg="8" nzXl="9">
+            {{resultData.dataPermissionsData?.accessUrl || '无'}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="6" nzLg="4" nzXl="3">匹配SQL ID</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="6" nzLg="8" nzXl="9">
+            <ng-container *ngIf="resultData.dataPermissionsData 
+                && resultData.dataPermissionsData.sqlId 
+                && resultData.dataPermissionsData.sqlId.length>30">
+                {{resultData.dataPermissionsData?.sqlId|slice:0:30}}
+                <span class="app-text-primary app-font-size13 app-cursor-pointer" nz-popover [nzPopoverContent]="sqlIdTpl">鼠标悬停查看更多</span>
+                <ng-template #sqlIdTpl>
+                    <div class="app-data-permissions-sql app-word-break">
+                        {{resultData.dataPermissionsData?.sqlId || '无'}}</div>
+                </ng-template>
+            </ng-container>
+
+            <ng-container *ngIf="!(resultData.dataPermissionsData 
+                && resultData.dataPermissionsData.sqlId 
+                && resultData.dataPermissionsData.sqlId.length>30)">
+                <div class="app-data-permissions-sql app-word-break">
+                    {{resultData.dataPermissionsData?.sqlId || '无'}}
+                </div>
+            </ng-container>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="6" nzLg="4" nzXl="3">参数名</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="6" nzLg="8" nzXl="9">
+            {{resultData.dataPermissionsData?.paramKey || '内置参数'}}
+        </nz-form-control>
+        <nz-form-label nzSm="24" nzMd="6" nzLg="4" nzXl="3">状态</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="6" nzLg="8" nzXl="9">
+            {{(resultData?.dataPermissionsData?.status|dataDicPipe:[resultData?.STATUS_TYPE,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+    </nz-form-item>
+</div>

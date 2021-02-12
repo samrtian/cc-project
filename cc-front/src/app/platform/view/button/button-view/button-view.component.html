@@ -1,0 +1,89 @@
+<div>
+    <div appPageTool [btnsTpl]="btnsTpl">
+        <ng-template #btnsTpl>
+            <app-business-tool-btn [buttonList]="buttonList" (btnClick)="onBtnClick($event)">
+            </app-business-tool-btn>
+        </ng-template>
+    </div>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+            <app-line-title title="基本信息"></app-line-title>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">按钮编号</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.buttonData?.buttonName || '无'}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">按钮名称</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.buttonData?.buttonName || '无'}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">函数名</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.buttonData?.functionName || '无'}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">序号</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.buttonData?.sortNum || '无'}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">业务标识</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{(resultData?.buttonData?.busniessMark|dataDicPipe:[resultData?.BUSNIESS_MARK_TYPE,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">布局标识</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{(resultData?.buttonData?.layoutMark|dataDicPipe:[resultData?.BUTTON_LAYOUT_MARK_TYPE,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">图标</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            <i nz-icon [nzType]="resultData?.buttonData?.iconCls" nzTheme="outline"
+                *ngIf="resultData && resultData.buttonData &&  resultData.buttonData.iconCls"></i>
+            {{resultData.buttonData?.iconCls || '无'}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">按钮样式</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            <button nz-button [nzType]="resultData.buttonData?.btnCls" nzSize="small">
+                {{(resultData?.buttonData?.btnCls|dataDicPipe:[resultData?.BUTTON_CLS_TYPE,'dicItemValue'])?.dicItemName}}-
+                {{resultData.buttonData?.btnCls || '无'}}
+            </button>
+        </nz-form-control>
+    </nz-form-item>
+
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">表达式</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.buttonData?.btnExp || '无'}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">状态</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{(resultData?.buttonData?.status|dataDicPipe:[resultData?.STATUS_TYPE,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+    </nz-form-item>
+
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">描述</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="19" nzLg="21" nzXl="22">
+            {{resultData.buttonData?.buttonDescribe || '无'}}
+        </nz-form-control>
+    </nz-form-item>
+
+</div>

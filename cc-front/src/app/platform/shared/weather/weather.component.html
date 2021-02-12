@@ -1,0 +1,53 @@
+<nz-skeleton [nzLoading]="loading" [nzActive]="true">
+    <div class="app-weather-container"
+        *ngIf="content && content.results && content.results.length && content.results[0].weather_data && content.results[0].weather_data.length">
+
+        <div class="app-weather-header-container">
+            <app-line-title [title]="cityName"></app-line-title>
+            <a (click)="initWeather()"><i nz-icon nzType="reload" nzTheme="outline"></i></a>
+        </div>
+
+        <div class="app-weather-item">
+
+            <div class="app-weather-desc">
+                <div class="app-weather-img">
+                    <img [src]="content.results[0].weather_data[0].dayPictureUrl" nz-tooltip nzTooltipTitle="白天" />
+                    <img [src]="content.results[0].weather_data[0].nightPictureUrl" nz-tooltip nzTooltipTitle="夜间" />
+                </div>
+                <div class="app-weather-content">
+                    {{content.results[0].weather_data[0].weather}}
+                </div>
+            </div>
+
+            <div class="app-weather-date">
+                <div>
+                    {{content.results[0].weather_data[0].date}}
+                </div>
+                <div>
+                    PM2.5：{{ content.results[0].pm25}}
+                </div>
+            </div>
+
+            <div class="app-weather-desc">
+                <div class="app-weather-wind">
+                    <i nz-icon nzType="platform/icon:wind" nzTheme="outline"></i>
+                    {{content.results[0].weather_data[0].wind}}
+                </div>
+                <div class="app-weather-temperature">
+                    <i nz-icon nzType="platform/icon:temperature" nzTheme="outline"></i>
+                    {{content.results[0].weather_data[0].temperature}}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div *ngIf="errorMsg && errorMsg.length">
+        <nz-result nzStatus="error" [nzTitle]="errorMsg" nzSubTitle="您可点击“重新获取”按钮获取天气信息！">
+            <div nz-result-extra>
+                <button nz-button nzType="primary" nzSize="small" (click)="initWeather()"><i nz-icon nzType="reload"
+                        nzTheme="outline"></i>重新获取</button>
+            </div>
+        </nz-result>
+    </div>
+</nz-skeleton>

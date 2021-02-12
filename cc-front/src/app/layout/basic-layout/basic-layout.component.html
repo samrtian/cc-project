@@ -1,0 +1,5 @@
+<nz-layout class="app-basic-layout-container">
+  <app-header [sysLogo]="sysLogo" [userData]="mainData.userData" (switchSiderChange)="showSider=$event"></app-header>
+  <app-main [showSider]="showSider" [userData]="mainData.userData" [menuData]="mainData.menuData" [userInfoRouter]="'/app/user/userInfo'">
+  </app-main>
+</nz-layout>

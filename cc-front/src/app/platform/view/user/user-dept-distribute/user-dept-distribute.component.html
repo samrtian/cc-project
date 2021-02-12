@@ -1,0 +1,28 @@
+<div class="app-user-dept-distribute-container">
+    <div class="app-dept-tree-container">
+        <nz-tree #tree [nzData]="deptTreeData" nzExpandAll nzBlockNode>
+            <ng-template #nzTreeTemplate let-node>
+                <span (click)="selectNode(node)"
+                    class="ant-tree-node-content-wrapper ant-tree-node-content-wrapper-open">
+                    {{ node.title }}
+                </span>
+            </ng-template>
+        </nz-tree>
+    </div>
+
+    <div class="app-dept-selected-container">
+        <ul nz-list [nzDataSource]="selectNodeList" [nzRenderItem]="renderItemTpl">
+            <ng-template #renderItemTpl let-item>
+                <li nz-list-item [nzActions]="[opActionTpl]" [nzContent]="contentTpl"></li>
+                <ng-template #contentTpl>
+                    <div class="app-dept-name" [title]="item.deptName">
+                        {{item.deptName}}
+                    </div>
+                </ng-template>
+                <ng-template #opActionTpl><a (click)="deleteNode(item)" class="app-dept-selected-delete"><i nz-icon
+                            nzType="delete" nzTheme="outline"></i></a></ng-template>
+            </ng-template>
+        </ul>
+    </div>
+
+</div>

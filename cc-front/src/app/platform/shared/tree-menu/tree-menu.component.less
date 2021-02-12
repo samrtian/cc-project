@@ -1,0 +1,237 @@
+@import '../../../../assets/platform/less/theme/app.less';
+
+.app-tree-menu {
+  padding-bottom: 0;
+}
+
+.app-left-toolbar-tree-menu {
+  .app-nav-search {
+    padding-left  : 15px;
+    padding-right : 15px;
+    padding-bottom: 15px;
+    padding-top   : 15px;
+
+    /deep/ .ant-input-affix-wrapper {
+      background: @app-left-toolbar-menu-input-bg;
+      border-color: @app-left-toolbar-menu-input-border-color;
+    }
+
+    /deep/ .ant-input {
+      background  : @app-left-toolbar-menu-input-bg;
+      border-color: @app-left-toolbar-menu-input-border-color;
+      color       : @app-left-toolbar-menu-input-color;
+      filter      : alpha(opacity=90);
+      -moz-opacity: 0.9;
+      opacity     : 0.9;
+      font-size   : @app-left-toolbar-menu-search-font-size;
+
+      &:focus {
+        border-color: @app-left-toolbar-menu-input-border-hover-color;
+      }
+
+      &::-webkit-input-placeholder {
+        color: lighten(@app-left-toolbar-menu-input, 50%);
+      }
+
+      &:-moz-placeholder {
+        color: lighten(@app-left-toolbar-menu-input, 50%);
+      }
+
+      &::-moz-placeholder {
+        color: lighten(@app-left-toolbar-menu-input, 50%);
+      }
+
+      &:-ms-input-placeholder {
+        color: lighten(@app-left-toolbar-menu-input, 50%);
+      }
+
+      &:hover {
+        border-color: @app-left-toolbar-menu-input-border-hover-color;
+      }
+    }
+
+    /deep/ .ant-input-suffix {
+      color: @app-left-toolbar-menu-input-color;
+    }
+  }
+
+  .app-nav {
+    height       :~"-webkit-calc(100vh  - 65px)";
+    height       :~"calc(100vh - 65px)";
+    padding-left : 15px;
+    padding-right: 15px;
+
+    .app-search-msg {
+      color      : @app-left-toolbar-menu-search-msg;
+      font-size  : @app-left-toolbar-menu-search-font-size;
+      margin-left: 8px;
+    }
+
+    .app-sidebar-menu {
+      display   : block;
+      list-style: none;
+      padding   : 0;
+      margin    : 0;
+
+      li {
+        padding: 0;
+        margin : 0;
+
+        a {
+          border         : 0px;
+          display        : -webkit-box;
+          display        : flex;
+          flex-direction : row;
+          justify-content: space-between;
+          height         : 36px;
+          line-height    : 36px;
+          font-size      : @app-left-toolbar-menu-font-size;
+          color          : @app-left-toolbar-menu-font-color;
+          background     : transparent;
+
+          .app-node {
+            width    : 25px;
+            font-size:~"-webkit-calc(@{app-left-toolbar-menu-font-size} - 3px)";
+            font-size:~"calc(@{app-left-toolbar-menu-font-size} - 3px)";
+          }
+
+          i {
+            width: 25px !important;
+          }
+
+          .app-node-icon {
+            margin-left: 0px;
+          }
+
+          &:hover {
+            background        : @app-left-toolbar-menu-bg-hover-color;
+            color             : @app-left-toolbar-menu-font-hover-color;
+            -webkit-transition: 0.2s;
+            transition        : 0.2s;
+            -moz-transition   : 0.2s;
+            -o-transition     : 0.2s;
+            border-radius     : 2px;
+            cursor            : pointer;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+.app-sider-tree-menu {
+  .app-nav-search {
+    padding-left  : 15px;
+    padding-right : 15px;
+    padding-bottom: 15px;
+    padding-top   : 15px;
+
+    /deep/ .ant-input-affix-wrapper {
+      background: @app-tree-menu-input-bg;
+      border-color: @app-left-toolbar-menu-input-border-color;
+    }
+
+    /deep/ .ant-input {
+      background  : @app-tree-menu-input-bg;
+      border-color: @app-tree-menu-input-border-color;
+      color       : @app-tree-menu-input-color;
+      filter      : alpha(opacity=90);
+      -moz-opacity: 0.9;
+      opacity     : 0.9;
+      font-size   : @app-tree-menu-search-font-size;
+
+      &:focus {
+        border-color: @app-tree-menu-input-border-hover-color;
+      }
+
+      &::-webkit-input-placeholder {
+        color: lighten(@app-tree-menu-input, 50%);
+      }
+
+      &:-moz-placeholder {
+        color: lighten(@app-tree-menu-input, 50%);
+      }
+
+      &::-moz-placeholder {
+        color: lighten(@app-tree-menu-input, 50%);
+      }
+
+      &:-ms-input-placeholder {
+        color: lighten(@app-tree-menu-input, 50%);
+      }
+
+      &:hover {
+        border-color: @app-tree-menu-input-border-hover-color;
+      }
+    }
+
+    /deep/ .ant-input-suffix {
+      color: @app-tree-menu-input-color;
+    }
+  }
+
+  .app-nav {
+    height       :~"-webkit-calc(100vh - @{app-layout-content-padding-space} - @{app-layout-content-padding-space} - @{app-user-profile-height} - @{app-layout-header-height} - 45px)";
+    height       :~"calc(100vh - @{app-layout-content-padding-space} - @{app-layout-content-padding-space} - @{app-user-profile-height} - @{app-layout-header-height} - 45px)";
+    padding-left : 15px;
+    padding-right: 15px;
+
+    .app-search-msg {
+      color      : @app-tree-menu-search-msg;
+      font-size  : @app-tree-menu-search-font-size;
+      margin-left: 8px;
+    }
+
+    .app-sidebar-menu {
+      display   : block;
+      list-style: none;
+      padding   : 0;
+      margin    : 0;
+
+      li {
+        padding: 0;
+        margin : 0;
+
+        a {
+          border         : 0px;
+          display        : -webkit-box;
+          display        : flex;
+          flex-direction : row;
+          justify-content: space-between;
+          height         : 36px;
+          line-height    : 36px;
+          font-size      : @app-tree-menu-font-size;
+          color          : @app-tree-menu-font-color;
+          background     : transparent;
+
+          .app-node {
+            width    : 25px;
+            font-size:~"-webkit-calc(@{app-tree-menu-font-size} - 3px)";
+            font-size:~"calc(@{app-tree-menu-font-size} - 3px)";
+          }
+
+          i {
+            width: 25px !important;
+          }
+
+          .app-node-icon {
+            margin-left: 0px;
+          }
+
+          &:hover {
+            background        : @app-tree-menu-bg-hover-color;
+            color             : @app-tree-menu-font-hover-color;
+            -webkit-transition: 0.2s;
+            transition        : 0.2s;
+            -moz-transition   : 0.2s;
+            -o-transition     : 0.2s;
+            border-radius     : 2px;
+            cursor            : pointer;
+          }
+
+        }
+      }
+    }
+  }
+}

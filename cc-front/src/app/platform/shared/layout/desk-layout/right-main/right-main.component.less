@@ -1,0 +1,85 @@
+@import '../../../../../../assets/platform/less/theme/app.less';
+
+
+.app-right-main-container {
+    width :~"-webkit-calc(100vw - @{app-left-toolbar-width})";
+    width :~"calc(100vw - @{app-left-toolbar-width})";
+
+    .app-right-main-content-tool {
+        height                 : @app-btns-tool-height;
+        background             : @app-btns-tool-bg;
+        line-height            : @app-btns-tool-height;
+        border-bottom          : @app-btns-tool-border-bottom;
+        border-top-left-radius : @app-border-radius-sm;
+        border-top-right-radius: @app-border-radius-sm;
+        padding-left           : @app-layout-content-padding-space;
+        padding-right          : @app-layout-content-padding-space;
+        margin-left            : @app-layout-content-space;
+        margin-right           : @app-layout-content-space;
+        margin-top             : @app-layout-content-space;
+        display                : flex;
+        display                : -webkit-flex;
+        justify-content        : space-between;
+        position               : relative;
+        align-items            : center;
+        z-index                : @app-btns-tool-height-zindex;
+
+        .app-right-main-content-tool-title {
+            font-size    : 1.35em;
+            color        : @app-primary-color;
+            line-height  : 1.35em;
+            //font-weight: 600;
+            display      : -webkit-flex;
+            display      : flex;
+            align-items  : center;
+
+            i {
+                font-size   : 1.2em;
+                margin-right: 5px;
+                margin-top  : 1px;
+            }
+        }
+
+        .app-right-main-content-tool-btns {
+            line-height: 1.35em;
+        }
+    }
+
+    .app-right-main-content-router-default {
+        //margin-top: -@app-btns-tool-height;
+        padding: 0 @app-layout-content-space;
+        height :~"-webkit-calc(100vh  -  @{app-layout-content-space} - @{app-layout-content-space} - @{app-btns-tool-height})";
+        height :~"calc(100vh  - @{app-layout-content-space} - @{app-layout-content-space} - @{app-btns-tool-height})";
+
+        .app-right-main-content-router-default-inner {
+            //margin-top: @app-btns-tool-height;
+            // 这里添加一个内层高度
+            height:~"-webkit-calc(100vh    -  @{app-layout-content-space} - @{app-layout-content-space} -  @{app-btns-tool-height})";
+            height:~"calc(100vh    - @{app-layout-content-space} - @{app-layout-content-space} - @{app-btns-tool-height})";
+
+            /deep/ .app-main-default-container {
+                border-top-right-radius: 0;
+                border-top-left-radius : 0;
+            }
+
+            /deep/ .app-main-transparent-container {
+                border-top-right-radius: 0;
+                border-top-left-radius : 0;
+            }
+        }
+    }
+
+    .app-right-main-content-router {
+        margin-top: @app-layout-content-space;
+        padding   : 0 @app-layout-content-space;
+        height    :~"-webkit-calc(100vh    -  @{app-layout-content-space} - @{app-layout-content-space})";
+        height    :~"calc(100vh    - @{app-layout-content-space} - @{app-layout-content-space})";
+
+        .app-right-main-content-router-inner {
+            margin-top: 0;
+            // 这里添加一个内层高度
+            height    :~"-webkit-calc(100vh   -  @{app-layout-content-space} - @{app-layout-content-space})";
+            height    :~"calc(100vh     - @{app-layout-content-space} - @{app-layout-content-space})";
+        }
+    }
+}

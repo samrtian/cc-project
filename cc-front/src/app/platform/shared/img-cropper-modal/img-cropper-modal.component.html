@@ -1,0 +1,59 @@
+<div [hidden]="!visible" class="animated zoomIn delay-1s">
+  <nz-modal [nzVisible]="visible" [nzTitle]="title" (nzOnCancel)="close()" [nzClosable]="closable" [nzOkText]="null"
+    [nzCancelText]="null" [nzMaskClosable]="maskClosable" [nzWidth]="width" [nzContent]="modalContent"
+    [nzFooter]="modalFooter" (nzAfterOpen)="modalOpen = true" (nzAfterClose)="modalOpen = false">
+
+    <ng-template #modalContent>
+      <div class="app-img-cropper-container">
+        <div class="app-img-cropper-cut-container" [ngClass]="imgCropperCutCls">
+          <img-cropper #imgCropper [image]="imgData" [settings]="settings"></img-cropper>
+        </div>
+        <div class="app-img-preview-container" [ngClass]="imgPreviewCls">
+          <div class="app-img-preview-title">{{previewTitle}}</div>
+          <div class="app-original-img">
+            <img [src]="originalImgSrc"
+              [ngClass]="{'app-img-preview-square':previewSquare,'app-img-preview-round':!previewSquare}" appErrorSrc
+              [errSrc]="defaultImg">
+            <div class="app-preview-img-label">{{originalImgLabel}}</div>
+          </div>
+          <div class="app-preview-lg-img">
+            <img [src]="imgData.image" *ngIf="imgData.image"
+              [ngClass]="{'app-img-preview-square':previewSquare,'app-img-preview-round':!previewSquare}">
+            <img [src]="defaultImg" *ngIf="!imgData.image"
+              [ngClass]="{'app-img-preview-square':previewSquare,'app-img-preview-round':!previewSquare}">
+
+            <div class="app-preview-img-label">64*64</div>
+          </div>
+          <div class="app-preview-sm-img">
+            <img [src]="imgData.image" *ngIf="imgData.image"
+              [ngClass]="{'app-img-preview-square':previewSquare,'app-img-preview-round':!previewSquare}">
+            <img [src]="defaultImg" *ngIf="!imgData.image"
+              [ngClass]="{'app-img-preview-square':previewSquare,'app-img-preview-round':!previewSquare}">
+
+            <div class="app-preview-img-label">32*32</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-img-cropper-alert">
+        注：请上传小于{{(maxSize/1024/1024)}}M的JPG/JPEG、PNG、GIF图片。
+      </div>
+    </ng-template>
+
+
+
+    <ng-template #modalFooter>
+      <div class="app-img-cropper-btns">
+        <div class="app-img-cropper-upload-btn" [ngClass]="uploadBtnCls" *ngIf="modalOpen">
+          <button nz-button nzType="default"><i nz-icon [nzType]="browseBtnIcon" nzTheme="outline"></i>{{browseBtnText}}
+          </button>
+          <input type="file" appImgCropperSelect [cropper]="imgCropper" [maxSize]="maxSize"
+            (imgChange)="imgFileChange($event)">
+        </div>
+        <button nz-button nzType="primary" (click)="upload()"><i nz-icon [nzType]="uploadBtnIcon"
+            nzTheme="outline"></i>{{uploadBtnText}}</button>
+      </div>
+    </ng-template>
+
+  </nz-modal>
+</div>

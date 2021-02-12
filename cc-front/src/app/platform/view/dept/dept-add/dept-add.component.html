@@ -1,0 +1,85 @@
+<div class="app-main-default-container">
+    <div appPageTool [btnsTpl]="btnsTpl">
+        <ng-template #btnsTpl>
+            <app-business-tool-btn [buttonList]="buttonList" (btnClick)="onBtnClick($event)">
+            </app-business-tool-btn>
+        </ng-template>
+    </div>
+
+
+    <form nz-form [formGroup]="saveForm">
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24">
+                <app-line-title title="基本信息"></app-line-title>
+            </nz-form-label>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>编号</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="编号格式不正确（格式：3-15位字符）!">
+                <input type="text" nz-input formControlName="deptCode" placeholder="请输入..." />
+            </nz-form-control>
+
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>名称</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip=" 名称格式不正确（格式：1-50位字符）!">
+                <input type="text" nz-input formControlName="deptName" placeholder="请输入..." />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>简称</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="简称格式不正确（格式：1-25位字符）!">
+                <input type="text" nz-input formControlName="deptSortName" placeholder="请输入..." />
+            </nz-form-control>
+
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>上一级</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="请选择上一级！">
+                <nz-tree-select #parentDeptTreeSelect [nzNodes]="deptOptionList" formControlName="parentDeptId"
+                    nzShowSearch="true" nzAllowClear="false" [nzDropdownStyle]="{'max-height':'300px'}"
+                    nzPlaceHolder="请选择..." (ngModelChange)="selectParentDept($event)">
+                </nz-tree-select>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2">级别</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10">
+                <input type="number" nz-input formControlName="deptLevel" placeholder="请输入..." [readonly]="true" />
+            </nz-form-control>
+
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>负责人</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="请选择负责人!">
+                <nz-select formControlName="deptLeaderId" nzShowSearch nzAllowClear nzPlaceHolder="请选择...">
+                    <nz-option [nzValue]="item.userId" [nzLabel]="item.realName"
+                        *ngFor="let item  of deptLeaderOptionList"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2">联系电话</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="电话格式不正确（请软件固话或手机）!">
+                <input type="text" nz-input formControlName="deptTel" placeholder="请输入..." />
+            </nz-form-control>
+
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2" nzRequired>图标</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="图标格式不正确（格式：1-32个字符）！">
+                <input type="text" nz-input formControlName="iconCls" placeholder="请输入..." />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2">地址</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="地址格式不正确（格式：0-100位字符）!">
+                <textarea nz-input rows="3" formControlName="deptAddr" placeholder="请输入..."></textarea>
+            </nz-form-control>
+
+            <nz-form-label [nzSm]="24" [nzMd]="5" [nzLg]="3" [nzXl]="2">描述</nz-form-label>
+            <nz-form-control [nzSm]="24" [nzMd]="7" [nzLg]="9" [nzXl]="10" nzErrorTip="描述格式不正确（格式：0-250位字符）!">
+                <textarea nz-input rows="3" formControlName="deptDescript" placeholder="请输入..."></textarea>
+            </nz-form-control>
+        </nz-form-item>
+
+    </form>
+
+</div>

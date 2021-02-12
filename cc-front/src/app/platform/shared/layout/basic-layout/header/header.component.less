@@ -1,0 +1,130 @@
+@import '../../../../../../assets/platform/less/theme/app.less';
+
+.app-layout-header-container{
+  height: @app-layout-header-height;
+  line-height: @app-layout-header-height;
+  position: relative;
+  z-index: 9;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-box-shadow:@app-layout-header-shadow;
+  -moz-box-shadow:@app-layout-header-shadow;
+  box-shadow:@app-layout-header-shadow;
+  background: @app-layout-header-bg;
+  .app-header-logo-container{
+    background: @app-layout-header-logo-bg;
+    width: @app-layout-header-logo-width;
+    -webkit-box-shadow:@app-layout-header-logo-shadow;
+    -moz-box-shadow:@app-layout-header-logo-shadow;
+    box-shadow:@app-layout-header-logo-shadow;
+    .app-header-logo{
+      width: auto;
+      display: flex;
+      display: -webkit-flex;
+      align-items:center;
+      height: 100%;
+      padding-left: @app-layout-header-left-right-space;
+      img{
+        height: 28px;
+        width: 28px;
+      }
+      .app-logo-title{
+        margin-left: 5px;
+        font-size: @app-layout-header-logo-font-size;
+        font-weight: 550;
+        margin-top: -2px;
+        color:@app-layout-header-logo-color;
+      }
+    }
+  }
+  .app-header-nav{
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content:space-between;
+    -webkit-box-shadow:@app-layout-header-nav-shadow;
+    -moz-box-shadow:@app-layout-header-nav-shadow;
+    box-shadow:@app-layout-header-nav-shadow;
+    background: @app-layout-header-nav-bg;
+    .app-nav-item{
+      display: flex;
+      display: -webkit-flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:row;
+      height: 100%;
+      line-height: 100%;
+      height: 2.6em;
+      padding-left: 0.8em;
+      padding-right: 0.8em;
+      cursor: pointer;
+      border-radius: @app-layout-header-nav-item-radius;
+      background: @app-layout-header-nav-item-bg;
+      color: @app-layout-header-nav-item-color;
+      &:hover {
+          background: @app-layout-header-nav-item-hover-bg;
+          color: @app-layout-header-nav-item-hover-color;
+          transition: all 0.3s;
+      }
+      .app-nav-item-icon{
+        font-size: @app-layout-header-nav-item-font-size;
+      }
+      .app-nav-item-avatar{
+        width: 28px;
+        height: 28px;
+        margin-right: 2px;
+        vertical-align: baseline;
+        img{
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+        }
+      }
+      .app-nav-item-label{
+        font-size:@app-layout-header-nav-item-font-size;
+        margin-left: 5px;
+      }
+    }
+    .app-header-switch-btn{
+      display: @app-layout-header-switch-btn-display;
+      line-height: 2.6em;
+    }
+    .app-header-nav-left{
+      display: flex;
+      display: -webkit-flex;
+      justify-content:flex-start;
+      align-items:center;
+      line-height: 100%;
+      height: 100%;
+      .app-nav-item{
+        margin-left: 10px;
+        margin-right:10px;
+      }
+    }
+    .app-header-nav-right{
+      display: flex;
+      display: -webkit-flex;
+      justify-content:flex-end;
+      align-items:center;
+      line-height: 100%;
+      height: 100%;
+      padding-right: @app-layout-header-left-right-space;
+      .app-nav-item{
+        margin-left:12px;
+        
+      }
+    }
+  }
+}
+
+
+.app-nav-user-menu{
+  width: 120px;
+}
+
+
+
+ 
+
+
+

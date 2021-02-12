@@ -1,0 +1,57 @@
+@import '../../../../assets/platform/less/theme/app.less';
+.app-user-profile-card{
+    height: @app-user-profile-height;
+    background: transparent;
+    /deep/ .ant-card-body {
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 0px;
+    } 
+    /deep/ .ant-card-head {
+        padding: 0px;
+    } 
+    /deep/ .ant-card-actions{
+        border-width: 0;
+        background: transparent;
+        /deep/ li:not(:last-child) {
+            border-right-width: 0;
+        }
+    }
+    .app-user-profile{
+        display: -webkit-flex;
+        display: flex;
+        padding-bottom: 10px; 
+        .app-user-avatar{
+            display: -webkit-flex;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-right: 15px;
+            img{
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+            }
+        }
+        .app-user-info{
+            -o-text-overflow:ellipsis;
+            text-overflow:ellipsis;
+            overflow:hidden;
+            white-space:nowrap;
+            .app-user-real-name{
+              font-weight: 700;
+              size: 15px;
+              margin-bottom: 5px;
+              margin-top: 2px;
+            }
+            .app-user-item{
+                line-height: 22px;
+                font-size: 13px;
+            }
+        }
+    }
+}

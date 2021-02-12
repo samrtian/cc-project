@@ -1,0 +1,12 @@
+<a nz-dropdown [nzDropdownMenu]="moreMenu"><i nz-icon nzType="platform/icon:more"></i> 更多</a>
+<nz-dropdown-menu #moreMenu="nzDropdownMenu">
+    <ul nz-menu nzSelectable="false">
+        <ng-container *ngFor="let btn of btnList;let i = index">
+            <li nz-menu-item  (click)="btnHandler(btn.functionName)"
+                class="app-more-btn-item">
+                <i nz-icon [nzType]="btn.iconCls" theme="outline"></i>
+                {{btn.buttonName}}
+            </li>
+        </ng-container>
+    </ul>
+</nz-dropdown-menu>

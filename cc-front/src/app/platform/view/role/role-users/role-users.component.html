@@ -1,0 +1,17 @@
+<div class="app-role-user-container" appScrollbar>
+    <ul nz-list [nzDataSource]="list" [nzRenderItem]="renderItemTpl">
+        <ng-template #renderItemTpl let-item>
+            <li nz-list-item [nzContent]="contentTpl"></li>
+            <ng-template #contentTpl>
+                <div class="app-flex app-user-content-container">
+                    <div class="app-user-content-item">
+                        编号：{{item.userCode}}
+                    </div>
+                    <div class="app-user-content-item">
+                        姓名：{{item.realName}}
+                    </div>
+                </div>
+            </ng-template>
+        </ng-template>
+    </ul>
+</div>

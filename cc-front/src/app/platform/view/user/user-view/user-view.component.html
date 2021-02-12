@@ -1,0 +1,144 @@
+<div>
+    <div appPageTool [btnsTpl]="btnsTpl">
+        <ng-template #btnsTpl>
+            <app-business-tool-btn [buttonList]="buttonList" (btnClick)="onBtnClick($event)">
+            </app-business-tool-btn>
+        </ng-template>
+    </div>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+            <app-line-title title="基本信息"></app-line-title>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">编号</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.userData?.userCode || '无'}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">用户名</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.userData?.userName || '无'}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">姓名</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.userData?.realName || '无'}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">身份证</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.userData?.idCard || '无'}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">性别</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{(resultData?.userData?.sex|dataDicPipe:[resultData?.SEX_TYPE,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">邮箱</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.userData?.email || '无'}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">电话</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{resultData.userData?.telephone || '无'}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">状态</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{(resultData?.userData?.status|dataDicPipe:[resultData?.STATUS_TYPE,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">短信开关</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{(resultData?.userData?.smsSwitch|dataDicPipe:[resultData?.SMS_SWITCH_TYPE,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">邮箱开关</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="7" nzLg="9" nzXl="10">
+            {{(resultData?.userData?.emailSwitch|dataDicPipe:[resultData?.EMAIL_SWITCH_TYPE,'dicItemValue'])?.dicItemName}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label nzSm="24" nzMd="5" nzLg="3" nzXl="2">描述</nz-form-label>
+        <nz-form-control nzSm="24" nzMd="19" nzLg="21" nzXl="22">
+            {{resultData.userData?.userDescribe || '无'}}
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+            <app-line-title title="拥有的部门"></app-line-title>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+            <nz-table #deptTable [nzBordered]="true" [nzData]="resultData?.userData?.depts || []" [nzFrontPagination]="false" [nzSize]="'middle'">
+                <thead>
+                    <tr>
+                        <th [nzWidth]="'70px'">序号</th>
+                        <th [nzWidth]="'120px'">部门编号</th>
+                        <th [nzWidth]="'500px'">部门简称</th>
+                        <th>部门名称</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dept of deptTable.data;let i = index">
+                        <td>{{(i+1)}}</td>
+                        <td>{{dept.deptCode}}</td>
+                        <td>{{dept.deptSortName}}</td>
+                        <td>{{dept.deptName}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </nz-form-control>
+    </nz-form-item>
+
+
+    <nz-form-item class="app-margin-top15">
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+            <app-line-title title="拥有的角色"></app-line-title>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item >
+        <nz-form-control nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+            <nz-table #roleTable [nzBordered]="true" [nzData]="resultData?.userData?.roles || []" [nzFrontPagination]="false" [nzSize]="'middle'">
+                <thead>
+                    <tr>
+                        <th [nzWidth]="'70px'">序号</th>
+                        <th [nzWidth]="'120px'">角色编号</th>
+                        <th [nzWidth]="'500px'">角色名称</th>
+                        <th>角色描述</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let role of roleTable.data;let i = index">
+                        <td>{{(i+1)}}</td>
+                        <td>{{role.roleCode}}</td>
+                        <td>{{role.roleName}}</td>
+                        <td>{{role.roleDescribe || '无'}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </nz-form-control>
+    </nz-form-item>
+
+
+
+
+</div>

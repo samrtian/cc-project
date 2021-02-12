@@ -1,0 +1,30 @@
+<div class="app-tree-menu" [ngClass]="menuCls">
+  <div class="app-nav-search" *ngIf="showSearch">
+    <nz-input-group [nzSuffix]="suffixTemplate">
+      <input type="text" nz-input placeholder="输入菜单名，回车搜索..." [(ngModel)]="searchTxt"
+        (keyup)="searchMenu($event,true)" />
+    </nz-input-group>
+    <ng-template #suffixTemplate><i nz-icon nzType="close-circle" (click)="chearMenu($event)" *ngIf="searchTxt"></i>
+    </ng-template>
+  </div>
+  <div class="app-nav" appScrollbar>
+    <span class="app-search-msg" [hidden]="searchMsgHidden">
+      <app-custom-empty [content]="'搜索的菜单不存在！'"></app-custom-empty>
+    </span>
+    <ul class="app-sidebar-menu" [hidden]="!searchMsgHidden">
+      <li *ngFor="let item of data">
+        <a (click)="itemClicked(item);">
+          <div>
+            <i nz-icon [nzType]="item[nodeConfig.menuIcon]" class="app-node-icon"></i>
+            <span>{{item[nodeConfig.menuLabel]}}</span>
+          </div>
+          <div class="app-node">
+            <i nz-icon nzType="down" *ngIf="!isLeaf(item) && (item[nodeConfig.menuState] | treeMenuPipe)"></i>
+            <i nz-icon nzType="left" *ngIf="!isLeaf(item) && !(item[nodeConfig.menuState] | treeMenuPipe)"></i>
+          </div>
+        </a>
+        <app-tree-node [data]="item" [nodeConfig]="nodeConfig" [menuCls]="menuCls" [level]="1"></app-tree-node>
+      </li>
+    </ul>
+  </div>
+</div>

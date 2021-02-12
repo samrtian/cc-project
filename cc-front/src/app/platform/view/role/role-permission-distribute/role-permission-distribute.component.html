@@ -1,0 +1,53 @@
+<div class="app-role-permission-container" appScrollbar>
+    <nz-tabset>
+        <nz-tab nzTitle="菜单">
+            <nz-tree #menuTree [nzData]="menuTreeData" [nzCheckedKeys]="roleMenuData" nzBlockNode="true"
+                nzShowIcon="true" nzCheckable="true" nzCheckStrictly="true">
+            </nz-tree>
+        </nz-tab>
+        <nz-tab nzTitle="按钮与访问地址">
+            <ul nz-menu nzMode="inline" [nzInlineIndent]="2">
+                <li nz-submenu nzIcon="tags" [nzTitle]="category.label" *ngFor="let category of accessUrlAndButtonData">
+                    <ul *ngIf="category.children && category.children.length">
+                        <li nz-menu-item *ngFor="let item of category.children">
+                            <div class="app-flex">
+                                <label nz-checkbox ngDefaultControl [(ngModel)]="item.checked"></label>
+                                <span class="app-btn-accessurl-item-name">
+                                    <i nz-icon [nzType]="item.attr1==='TYPE_ACCESS_URL'?'api':'border'"
+                                        nzTheme="outline"></i> {{item.label}}
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                    <ng-container *ngIf="!(category.children && category.children.length)">
+                        <app-custom-empty></app-custom-empty>
+                    </ng-container>
+                </li>
+            </ul>
+        </nz-tab>
+        <nz-tab nzTitle="数据权限">
+            <ul nz-menu nzMode="inline" [nzInlineIndent]="2" class="app-data-permissions-ul">
+                <li nz-submenu nzIcon="tags" [nzTitle]="dataPpermissionsCategory.label" *ngFor="let dataPpermissionsCategory of dataPermissionsData">
+                    <ul *ngIf="dataPpermissionsCategory.children && dataPpermissionsCategory.children.length">
+                        <li nz-menu-item *ngFor="let item of dataPpermissionsCategory.children">
+                            <div class="app-flex app-data-permissions-title">
+                                <label nz-checkbox ngDefaultControl [(ngModel)]="item.checked"></label>
+                                <span class="app-btn-accessurl-item-name">
+                                    <i nz-icon [nzType]="'platform/icon:data-permissions'" nzTheme="outline"></i>
+                                    {{item.label}}
+                                </span>
+                            </div>
+                            <div class="app-flex app-flex-justify-content-between app-data-permissions-processor">
+                                <div>基本处理器：{{item.attr2 || '无'}}</div>
+                                <div>辅助处理器：{{item.attr3 || '无'}}</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ng-container *ngIf="!(dataPpermissionsCategory.children && dataPpermissionsCategory.children.length)">
+                        <app-custom-empty></app-custom-empty>
+                    </ng-container>
+                </li>
+            </ul>
+        </nz-tab>
+    </nz-tabset>
+</div>

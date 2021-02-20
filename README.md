@@ -36,6 +36,63 @@
 
 16.前后端实用的数据字典
 ```
+## 前端组件
+```
+以下是第三方组件
+1.echarts与ngx-echarts图表
+2.animate.css动画css
+3.lodash工具包
+4.ng-zorro-antdUI组件库
+5.ngx-cookie cookie操作库
+6.ngx-img-croppe图片裁剪
+7.nprogress进度条
+8.overlayscrollbars滚动条
+9.qrious二维码
+10.viewerjs图片查看器
+
+以下是自定义组件、管道、工具类
+1.access-url-modal访问地址模态框选择器
+2.business-btn动态按钮组件（不同场景下的动态按钮，权限使用）
+3.container-css容器css渲染指令
+4.cron cron表达式组件（分为input选择和模态框选择两种）
+5.custom-empty 自定义的空数据组件
+6.custom-pipe 自定义管道（包含数据字典、表达式管道）
+7.custom-template自定义模板指令（文本与模板指令）
+8.custom-validator自定义验证器（包含中文、邮箱、电话、固话、身份证、URL、密码等等验证器）
+9.error-src 错误url默认指令（例如：图片加载失败后替换的默认图片）
+10.exception表达式组件
+11.flop翻牌器指令
+12.image-viewer图片查看器指令
+13.img-cropper-modal图片裁剪模态框组件
+14.layout平台布局组件
+15.login登录封装组件
+16.notice公告组件
+17.page-tool页面工具条指令
+18.platform-auth平台鉴权
+19.platform-interceptor平台拦截器
+20.platform-root平台根组件
+21.platform-storage平台缓存服务
+22.qrcode二维码组件
+23.scrollbar滚动条指令
+24.single-modal单一模态框（无论打开多少次，只显示一个）
+25.spinning 转圈圈组件（一般加载时使用）
+26.storage本地缓存服务（session、local、session）
+27.structure-diagram 结构图（树型的结构图）
+28.task 待办组件
+29.tree-menu菜单树组件
+30.update-pwd更新密码框组件
+31.user-profile用户资料组件
+32.line-title 行标题组件
+33.water-marker水印组件
+34.weather天气组件
+35.common-util公司工具类（常用处理工具类）
+36.security-util安全工具类（加解密工具类）
+```
+
+## 后端插件
+```
+```
+
 
 ## 系统说明
 请参考：https://www.toutiao.com/i6883358147356918280/

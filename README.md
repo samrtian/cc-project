@@ -4,7 +4,8 @@
 
 ## 相关说明：
 
-```1.前端：angular9+ng-zorro-antd9+less+各种组件
+```
+1.前端：angular+ng-zorro-antd+less+各种组件
 
 2.后端：spring boot+mybatis3.1.1 + maven模块化
 
